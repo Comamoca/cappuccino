@@ -40,8 +40,8 @@ graph TD
     A[ディレクトリ作成]
     A --> |cup init|B[執筆] -->|cup generate| C(HTML生成)
     C --> D[HTMLをサーバーに配置する]
-    C --> E[静的サイト完成]
-    D --> |cup setup| F(生成されたHTMLを登録)
+    D --> E[静的サイト完成]
+    C --> |cup setup| F(生成されたHTMLを登録)
     F --> |git push| G[ヘッドレスCMSとして使う]
 ```
 **この図に出てきている`cup`コマンドはまだ想定段階です。コマンド名が変わるかもしれません。**
