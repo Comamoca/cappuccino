@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # cappuccino 
+=======
+# cappuccino ☕
+>>>>>>> origin/main
 
 ## **ようこそcappuccinoプロジェクトへ！**
 
@@ -96,8 +100,13 @@ capputinoではテーマを自由に作成して自由にインストール出�
 
 cappuccinoはMarkDownをHTMLにレンダリングし、サイトを構築する事を想定しています。
 なので、VueやReactで静的サイトを開発したい場合は[GridSome](https://gridsome.org/)や[Next.js](https://nextjs.org/)をオススメします。
+<<<<<<< HEAD
 しかし、このようなJavaScriptフレームワークとの連携は**こまもか自身もとても興味がある**の??、
 今後拡張機能などの形で実装す?るかもしれません。
+=======
+しかし、このようなJavaScriptフレームワークとの連携は**こまもか自身もとても興味がある**ので、
+今後拡張機能などの形で実装するかもしれません。
+>>>>>>> origin/main
 
 - 管理画面・Webエディタのサポート
 
