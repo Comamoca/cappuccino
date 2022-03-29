@@ -1,0 +1,99 @@
+<h1>cappuccino ☕</h1>
+<h2><strong>ようこそcappuccinoプロジェクトへ！</strong></h2>
+<p><strong>このプロジェクトはまだ構想段階で、今後大きな変更がされる可能性があります！気をつけて下さい！！</strong></p>
+<p>cappuccinoは軽量さとシンプルであることを目標に開発しているヘッドレスCMSです！</p>
+<p>主に以下のような人が使うのに向いていると考えています。</p>
+<ul>
+<li>とにかく覚えることが少ないCMSを使いたい</li>
+<li>サイトの見た目をHTMLとCSSでゴリゴリ書きたい</li>
+<li>既存のツールの知識で楽をしたい</li>
+</ul>
+<p>cappuccinoでは提供する機能を少なくして、
+<strong>なるべく一般的な技術(git, MarkDown, マスタッシュ構文など)でサイトを構築すること</strong>を目標にしています。</p>
+<h2>cappuccinoの概要</h2>
+<p>cappuccinoでは主に２つの機能で成り立つよう設計しています。</p>
+<ul>
+<li>オートリロードするサイトジェネレーター機能</li>
+</ul>
+<p>cappuccinoでは静的サイトジェネレーターの機能を内蔵します。
+この機能はエディタで編集しているMarkDownファイルを保存したときに自動でレンダリングが行われ、
+プレビューが更新されるようにする予定です。</p>
+<ul>
+<li>ヘッドレスCMS</li>
+</ul>
+<p>cappuccinoが提供する機能の２つ目はCMSです。これは<a href="https://fastapi.tiangolo.com/">FastAPI</a>を使って、
+ファイルのルーティングなどをサポートしようと考えています。
+また、この機能は<strong>Pythonが動く環境でデプロイしないと使えません。</strong> 注意してください！</p>
+<h2>想定している使い方</h2>
+<pre><code class="language-mermaid">graph TD
+    A[ディレクトリ作成]
+    A --&gt; |cup init|B[執筆] --&gt;|cup generate| C(HTML生成)
+    C --&gt; D[HTMLをサーバーに配置する]
+    D --&gt; E[静的サイト完成]
+    C --&gt; |cup setup| F(生成されたHTMLを登録)
+    F --&gt; |git push| G[ヘッドレスCMSとして使う]
+</code></pre>
+<p><strong>この図に出てきている<code>cup</code>コマンドはまだ想定段階です。コマンド名が変わるかもしれません。</strong>
+また、静的サイトのホスティングはGithub Pages、ヘッドレスCMSのホスティングはHerokuを想定しています。
+そしてHTMLレンダリングには<a href="https://github.com/miyuchina/mistletoe">mistletoe</a>と<a href="https://github.com/pallets/jinja">Jinja</a>を採用しています。</p>
+<p>ページはMarkDownで書きます。またテンプレートエンジンJinjaを使い、外部ファイルの埋め込みなどもサポートする予定です。</p>
+<h2>特徴</h2>
+<p>cappuccinoCMSでは以下の機能を実装予定です。</p>
+<h3>概要に書いた2つの機能</h3>
+<p>まずこの機能がないとcappuccinoは機能しません。なのでこの２つの機能を最優先で実装します。</p>
+<h3>ドキュメント</h3>
+<p>直接は関係してきませんが、とても大切なものだと考えています。
+僕は最近<a href="https://wezfurlong.org/wezterm/">wezterm</a>というターミナルを使っているのですが、
+そのプロジェクトのドキュメントが個人プロジェクトとは思えないくらい充実していて圧倒されたので、
+weztermまでとは行かなくとも分かりやすく親切なドキュメントを整備していきたいです。</p>
+<h3>Front matter</h3>
+<p>ZennのMarkDownなどでよく見る<code>---</code>で囲まれた部分のことです。
+これを使うことでファイルにメタデータを付与でき、ページの管理が楽になります。
+cappuccinoではYAMLを採用する予定です。</p>
+<h3>テーマ機能</h3>
+<p>capputinoではテーマを自由に作成して自由にインストール出来るようにする予定です。
+また、テーマを開発する際にCSSライブラリを使用したり、後述のスタイルガイドジェネレーターを使えるようにする予定です。
+外部テーマを使う方法としては、<code>git submodule</code>を検討しています。</p>
+<h3>スタイルガイドジェネレーター</h3>
+<p>最近Twitterでスタイルガイドジェネレーターと言うものを知りました。
+コードだけでは分かりづらい各パーツを図鑑のように見れるのは、
+デザインが重要なサイト開発においてとても重要だと強く感じました。</p>
+<h3>プラグイン機構</h3>
+<p>僕は以前bundlerというプラグインマネージャのようなものを開発していました。(公開はしていません)
+その開発で得たプラグイン機構の知識を活かしてこの機能を実装する予定です。</p>
+<h2>今は実装しない機能</h2>
+<p><strong>cappuccinoではサポートしない機能もあります。</strong></p>
+<ul>
+<li>Vue, Reactなどのサポート</li>
+</ul>
+<p>cappuccinoはMarkDownをHTMLにレンダリングし、サイトを構築する事を想定しています。
+なので、VueやReactで静的サイトを開発したい場合は<a href="https://gridsome.org/">GridSome</a>や<a href="https://nextjs.org/">Next.js</a>をオススメします。
+しかし、このようなJavaScriptフレームワークとの連携は<strong>こまもか自身もとても興味がある</strong>ので、
+今後拡張機能などの形で実装するかもしれません。</p>
+<ul>
+<li>管理画面・Webエディタのサポート</li>
+</ul>
+<p>突然ですが皆さん、MarkDownはどのようなエディタで書いているでしょうか？
+VSCode? Atom? <strong>Vim?</strong> 色々あると思いますが、僕こまもかはVimで書いています。
+僕個人の考えとしては<strong>記事など内容が大事なものほど自分好みのエディタを使って書くべき</strong>だと思っています。
+なので、Webエディタの実装は致しません。管理画面についてですが、僕の今現在の技術力では僕自身が自信をもって
+提供出来るクォリティの管理画面を<strong>提供出来るとは思えない</strong>ので開発致しません。ごめんなさい。</p>
+<h2>開発に参加するには</h2>
+<p>cappuccinoプロジェクトでのDiscordサーバーの運営などはしないつもりです。また、しばらくは単独で開発します。
+機能追加などをしたいと思ったときは<a href="https://twitter.com/Comamoca_">こまもかのTwitteer</a>のDMや<a href="https://github.com/Comamoca/cappuccino/issues/new?assignees=Comamoca&amp;labels=%E6%A9%9F%E8%83%BD%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88&amp;template=---------.md&amp;title=%E8%BF%BD%E5%8A%A0%E6%A9%9F%E8%83%BD%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88">Github Issue</a>などでお願いします。</p>
+<p>また、このリポジトリでは<strong>日本語でIssue送って大丈夫です！むしろウェルカム</strong>です！
+I'll do my best to read it, even if it's in English, so feel free to post an Issue, I'd appreciate it!</p>
+<h2>よくありそうな質問</h2>
+<ul>
+<li>Q. cappuccinoってどう読みますか？</li>
+<li>A. カプチーノです！スペルは「かぷぷうちちいの」と覚えると覚えやすいです！</li>
+</ul>
+<hr />
+<ul>
+<li>Q. なんでcappuccinoを作ろうと思ったの？</li>
+<li>A. 先日とあるヘッドレスCMSを使っていたのですが、使い方が複雑でどうも自分には合っていないと感じ、
+どうせならヘッドレスCMSの仕組みの勉強も兼ねて自作してみようと思い開発を始めました。
+また、この界隈でWeb系のことをしている人が多く、そのような人たちに使ってもらったり意見を貰えるのでは、と思ったのも理由の一つです。</li>
+</ul>
+<hr />
+<p>他にも多く寄せられた質問、ここに書くべき質問などはここに追加していきます！</p>

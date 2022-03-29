@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "cappuccino"
+version = "0.1.0"
+description = "シンプルで軽量なヘッドレスCMS"
+authors = ["Comamoca <comamoca.dev@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Jinja2 = "^3.0.3"
+Flask = "^2.0.3"
+watchdog = "^2.1.6"
+mistletoe = "^0.8.2"
+pyquery = "^1.4.3"
+fastapi = "^0.75.0"
+uvicorn = "^0.17.6"
+logzero = "^1.7.0"
+SQLAlchemy = "^1.4.32"
+toml = "^0.10.2"
+tqdm = "^4.63.1"
+python-frontmatter = "^1.0.0"
+click = "^8.0.4"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

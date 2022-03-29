@@ -1,0 +1,4 @@
+---
+title: サンプルページ
+publish: True
+---
