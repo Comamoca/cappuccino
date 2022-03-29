@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# cappuccino 
-=======
 # cappuccino ☕
->>>>>>> origin/main
 
 ## **ようこそcappuccinoプロジェクトへ！**
 
